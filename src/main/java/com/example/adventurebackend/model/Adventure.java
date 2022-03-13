@@ -5,39 +5,49 @@ import javax.persistence.*;
 @Entity
 public class Adventure {
 
-    @Id
-    @Column(name="adventurecode")
-    private String adventureCode;
-    private String adventureName;
-    private String groupName;
+  @Id
+  @Column(name = "adventurecode")
+  private String adventureCode;
 
-    public String getAdventureCode() {
-        return adventureCode;
-    }
+  private String adventureName;
+  private String groupName;
 
-    public void setAdventureCode(String adventureCode) {
-        this.adventureCode = adventureCode;
-    }
+  public String getAdventureCode() {
+    return adventureCode;
+  }
 
-    public String getAdventureName() {
-        return adventureName;
-    }
+  public void setAdventureCode(String adventureCode) {
+    this.adventureCode = adventureCode;
+  }
 
-    public void setAdventureName(String adventureName) {
-        this.adventureCode = adventureName;
-    }
+  public String getAdventureName() {
+    return adventureName;
+  }
 
-    public String getGroupName() {return groupName;}
+  public void setAdventureName(String adventureName) {
+    this.adventureCode = adventureName;
+  }
 
-    public void setGroupName(String groupName) {this.groupName = groupName;}
+  public String getGroupName() {
+    return groupName;
+  }
 
+  public void setGroupName(String groupName) {
+    this.groupName = groupName;
+  }
 
-    @Override
-    public String toString() {
-        return "Adventure{" +
-                "adventureCode='" + adventureCode + '\'' +
-                ", adventureName='" + adventureName + '\'' +
-                ", groupName='" + groupName + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Adventure{"
+        + "adventureCode='"
+        + adventureCode
+        + '\''
+        + ", adventureName='"
+        + adventureName
+        + '\''
+        + ", groupName='"
+        + groupName
+        + '\''
+        + '}';
+  }
 }

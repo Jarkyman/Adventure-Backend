@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AdventureController {
 
-    @GetMapping("/")
-    public String test() {
-        return "Hello World";
-    }
-
+  @GetMapping("/")
+  public String test() {
+    return "Hello World";
+  }
 }
