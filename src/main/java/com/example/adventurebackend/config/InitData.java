@@ -11,14 +11,11 @@ public class InitData implements CommandLineRunner {
 
   @Autowired AdventuresRepository adventuresRepository;
 
-  @Autowired
-  EmployeeRepository employeeRepository;
+  @Autowired EmployeeRepository employeeRepository;
 
-  @Autowired
-  ActivityRepository activityRepository;
+  @Autowired ActivityRepository activityRepository;
 
-  @Autowired
-  BookingRepository bookingRepository;
+  @Autowired BookingRepository bookingRepository;
 
   @Override
   public void run(String... args) throws Exception {}

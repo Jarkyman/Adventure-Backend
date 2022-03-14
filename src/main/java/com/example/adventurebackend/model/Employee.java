@@ -8,14 +8,13 @@ import javax.persistence.Id;
 public class Employee {
 
   @Id
-  @Column(name="employee_id")
-
+  @Column(name = "employee_id")
   private String employeeId;
+
   private String employeeFirstName;
   private String employeeLastName;
   private String employeePhoneNumber;
   private String employeeTitle;
-
 
   public String getEmployeeId() {
     return employeeId;
@@ -59,12 +58,22 @@ public class Employee {
 
   @Override
   public String toString() {
-    return "Employee{" +
-        "employeeId='" + employeeId + '\'' +
-        ", employeeFirstName='" + employeeFirstName + '\'' +
-        ", employeeLastName='" + employeeLastName + '\'' +
-        ", employeePhoneNumber='" + employeePhoneNumber + '\'' +
-        ", employeeTitle='" + employeeTitle + '\'' +
-        '}';
+    return "Employee{"
+        + "employeeId='"
+        + employeeId
+        + '\''
+        + ", employeeFirstName='"
+        + employeeFirstName
+        + '\''
+        + ", employeeLastName='"
+        + employeeLastName
+        + '\''
+        + ", employeePhoneNumber='"
+        + employeePhoneNumber
+        + '\''
+        + ", employeeTitle='"
+        + employeeTitle
+        + '\''
+        + '}';
   }
 }

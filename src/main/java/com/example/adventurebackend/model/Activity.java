@@ -8,12 +8,11 @@ import javax.persistence.Id;
 public class Activity {
 
   @Id
-  @Column(name="activity_id")
-
+  @Column(name = "activity_id")
   private String activityId;
+
   private String activityTitle;
   private double activityPriceOneHour;
-
 
   public String getActivityId() {
     return activityId;
@@ -41,10 +40,15 @@ public class Activity {
 
   @Override
   public String toString() {
-    return "Activity{" +
-        "activityId='" + activityId + '\'' +
-        ", activityTitle='" + activityTitle + '\'' +
-        ", activityPriceOneHour=" + activityPriceOneHour +
-        '}';
+    return "Activity{"
+        + "activityId='"
+        + activityId
+        + '\''
+        + ", activityTitle='"
+        + activityTitle
+        + '\''
+        + ", activityPriceOneHour="
+        + activityPriceOneHour
+        + '}';
   }
 }
