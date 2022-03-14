@@ -1,5 +1,6 @@
 package com.example.adventurebackend.config;
 
+import com.example.adventurebackend.repository.ActivityRepository;
 import com.example.adventurebackend.repository.AdventuresRepository;
 import com.example.adventurebackend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ public class InitData implements CommandLineRunner {
 
   @Autowired
   EmployeeRepository employeeRepository;
+
+  @Autowired
+  ActivityRepository activityRepository;
 
   @Override
   public void run(String... args) throws Exception {}
