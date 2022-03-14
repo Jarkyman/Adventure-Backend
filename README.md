@@ -1,2 +1,1 @@
 # Adventure-Backend
-Gruppe X
