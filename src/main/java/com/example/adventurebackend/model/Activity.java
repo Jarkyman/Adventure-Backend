@@ -1,7 +1,6 @@
 package com.example.adventurebackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -60,11 +59,16 @@ public class Activity {
 
   @Override
   public String toString() {
-    return "Activity{" +
-        "activityId=" + activityId +
-        ", activityTitle='" + activityTitle + '\'' +
-        ", activityPriceOneHour=" + activityPriceOneHour +
-        ", booking=" + booking +
-        '}';
+    return "Activity{"
+        + "activityId="
+        + activityId
+        + ", activityTitle='"
+        + activityTitle
+        + '\''
+        + ", activityPriceOneHour="
+        + activityPriceOneHour
+        + ", booking="
+        + booking
+        + '}';
   }
 }

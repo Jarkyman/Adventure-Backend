@@ -1,6 +1,5 @@
 package com.example.adventurebackend.model;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -38,7 +37,6 @@ public class Booking {
   @JoinColumn(name = "employee_id")
   @JsonBackReference
   private Employee employee;
-
 
   public int getBookingId() {
     return bookingId;
@@ -106,15 +104,26 @@ public class Booking {
 
   @Override
   public String toString() {
-    return "Booking{" +
-        "bookingId=" + bookingId +
-        ", fullName='" + fullName + '\'' +
-        ", phoneNumber='" + phoneNumber + '\'' +
-        ", email='" + email + '\'' +
-        ", bookingDate=" + bookingDate +
-        ", participants=" + participants +
-        ", activity=" + activity +
-        ", employee=" + employee +
-        '}';
+    return "Booking{"
+        + "bookingId="
+        + bookingId
+        + ", fullName='"
+        + fullName
+        + '\''
+        + ", phoneNumber='"
+        + phoneNumber
+        + '\''
+        + ", email='"
+        + email
+        + '\''
+        + ", bookingDate="
+        + bookingDate
+        + ", participants="
+        + participants
+        + ", activity="
+        + activity
+        + ", employee="
+        + employee
+        + '}';
   }
 }
