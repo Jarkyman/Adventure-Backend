@@ -1,6 +1,5 @@
 package com.example.adventurebackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,9 +12,9 @@ import java.util.Set;
 public class Booking {
 
   @Id
-  @Column(name="booking_id")
-
+  @Column(name = "booking_id")
   private String bookingId;
+
   private String fullName;
   private String phoneNumber;
   private String email;
@@ -23,14 +22,18 @@ public class Booking {
   private int participants;
 
   @OneToMany
+<<<<<<< HEAD
   @JoinColumn(name="activity_id")
   @JsonBackReference
+=======
+  @JoinColumn(name = "activity_id")
+  //  @JsonBackReference
+>>>>>>> 3f2b16203799271da00f3e711b8fb44c1299936e
   private Set<Activity> bookingActivity = new HashSet<>();
 
   @OneToMany
-  @JoinColumn(name="employee_id")
+  @JoinColumn(name = "employee_id")
   private Set<Employee> bookingEmployee = new HashSet<>();
-
 
   public String getBookingId() {
     return bookingId;
@@ -98,15 +101,27 @@ public class Booking {
 
   @Override
   public String toString() {
-    return "Booking{" +
-        "bookingId='" + bookingId + '\'' +
-        ", fullName='" + fullName + '\'' +
-        ", phoneNumber='" + phoneNumber + '\'' +
-        ", email='" + email + '\'' +
-        ", bookingDate=" + bookingDate +
-        ", participants=" + participants +
-        ", bookingActivity=" + bookingActivity +
-        ", bookingEmployee=" + bookingEmployee +
-        '}';
+    return "Booking{"
+        + "bookingId='"
+        + bookingId
+        + '\''
+        + ", fullName='"
+        + fullName
+        + '\''
+        + ", phoneNumber='"
+        + phoneNumber
+        + '\''
+        + ", email='"
+        + email
+        + '\''
+        + ", bookingDate="
+        + bookingDate
+        + ", participants="
+        + participants
+        + ", bookingActivity="
+        + bookingActivity
+        + ", bookingEmployee="
+        + bookingEmployee
+        + '}';
   }
 }
