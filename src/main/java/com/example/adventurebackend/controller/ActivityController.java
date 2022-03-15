@@ -11,8 +11,7 @@ import java.util.List;
 @RestController
 public class ActivityController {
 
-  @Autowired
-  ActivityRepository activityRepository;
+  @Autowired ActivityRepository activityRepository;
 
   @GetMapping("/activity")
   public String test() {
@@ -20,13 +19,13 @@ public class ActivityController {
   }
 
   @GetMapping("/activities")
-  public List<Activity> getAllActivities(){
+  public List<Activity> getAllActivities() {
     return activityRepository.findAll();
   }
 
   @PostMapping("/create/activity")
   @ResponseStatus(HttpStatus.CREATED)
-  public Activity postActivity(@RequestBody Activity activity){
+  public Activity postActivity(@RequestBody Activity activity) {
     System.out.println(activity);
     return activityRepository.save(activity);
   }
