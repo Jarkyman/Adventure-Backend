@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 
 public class InitData implements CommandLineRunner {
 
+  //Hej Alle
+
 
   @Autowired EmployeeRepository employeeRepository;
 
