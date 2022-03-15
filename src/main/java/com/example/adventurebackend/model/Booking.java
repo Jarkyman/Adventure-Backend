@@ -1,18 +1,15 @@
 package com.example.adventurebackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Booking {
 
   @Id
-//  @Column(name = "booking_id")
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  //  @Column(name = "booking_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int bookingId;
 
   private String fullName;
@@ -23,14 +20,14 @@ public class Booking {
   private String bookingActivity;
   private String bookingEmployee;
 
-//  @OneToMany
-//  @JoinColumn(name = "activity_id")
-//  @JsonBackReference
-//  private Set<Activity> bookingActivity = new HashSet<>();
-//
-//  @OneToMany
-//  @JoinColumn(name = "employee_id")
-//  private Set<Employee> bookingEmployee = new HashSet<>();
+  //  @OneToMany
+  //  @JoinColumn(name = "activity_id")
+  //  @JsonBackReference
+  //  private Set<Activity> bookingActivity = new HashSet<>();
+  //
+  //  @OneToMany
+  //  @JoinColumn(name = "employee_id")
+  //  private Set<Employee> bookingEmployee = new HashSet<>();
 
   public int getBookingId() {
     return bookingId;
@@ -97,59 +94,71 @@ public class Booking {
   }
 
   //  public Set<Activity> getBookingActivity() {
-//    return bookingActivity;
-//  }
-//
-//  public void setBookingActivity(Set<Activity> bookingActivity) {
-//    this.bookingActivity = bookingActivity;
-//  }
-//
-//  public Set<Employee> getBookingEmployee() {
-//    return bookingEmployee;
-//  }
-//
-//  public void setBookingEmployee(Set<Employee> bookingEmployee) {
-//    this.bookingEmployee = bookingEmployee;
-//  }
+  //    return bookingActivity;
+  //  }
+  //
+  //  public void setBookingActivity(Set<Activity> bookingActivity) {
+  //    this.bookingActivity = bookingActivity;
+  //  }
+  //
+  //  public Set<Employee> getBookingEmployee() {
+  //    return bookingEmployee;
+  //  }
+  //
+  //  public void setBookingEmployee(Set<Employee> bookingEmployee) {
+  //    this.bookingEmployee = bookingEmployee;
+  //  }
 
   @Override
   public String toString() {
-    return "Booking{" +
-        "bookingId=" + bookingId +
-        ", fullName='" + fullName + '\'' +
-        ", phoneNumber='" + phoneNumber + '\'' +
-        ", email='" + email + '\'' +
-        ", bookingDate=" + bookingDate +
-        ", participants=" + participants +
-        ", bookingActivity='" + bookingActivity + '\'' +
-        ", bookingEmployee='" + bookingEmployee + '\'' +
-        '}';
+    return "Booking{"
+        + "bookingId="
+        + bookingId
+        + ", fullName='"
+        + fullName
+        + '\''
+        + ", phoneNumber='"
+        + phoneNumber
+        + '\''
+        + ", email='"
+        + email
+        + '\''
+        + ", bookingDate="
+        + bookingDate
+        + ", participants="
+        + participants
+        + ", bookingActivity='"
+        + bookingActivity
+        + '\''
+        + ", bookingEmployee='"
+        + bookingEmployee
+        + '\''
+        + '}';
   }
 
-
-//  @Override
-//  public String toString() {
-//    return "Booking{"
-//        + "bookingId='"
-//        + bookingId
-//        + '\''
-//        + ", fullName='"
-//        + fullName
-//        + '\''
-//        + ", phoneNumber='"
-//        + phoneNumber
-//        + '\''
-//        + ", email='"
-//        + email
-//        + '\''
-//        + ", bookingDate="
-//        + bookingDate
-//        + ", participants="
-//        + participants
-//        + ", bookingActivity="
-//        + bookingActivity
-//        + ", bookingEmployee="
-//        + bookingEmployee
-//        + '}';
-//  }
+  //  @Override
+  //  public String toString() {
+  //    return "Booking{"
+  //        + "bookingId='"
+  //        + bookingId
+  //        + '\''
+  //        + ", fullName='"
+  //        + fullName
+  //        + '\''
+  //        + ", phoneNumber='"
+  //        + phoneNumber
+  //        + '\''
+  //        + ", email='"
+  //        + email
+  //        + '\''
+  //        + ", bookingDate="
+  //        + bookingDate
+  //        + ", participants="
+  //        + participants
+  //        + ", bookingActivity="
+  //        + bookingActivity
+  //        + ", bookingEmployee="
+  //        + bookingEmployee
+  //        + '}';
+  //  }
 }
