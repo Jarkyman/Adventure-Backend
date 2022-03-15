@@ -11,29 +11,32 @@ import java.util.Set;
 public class Booking {
 
   @Id
-  @Column(name = "booking_id")
-  private String bookingId;
+//  @Column(name = "booking_id")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  private int bookingId;
 
   private String fullName;
   private String phoneNumber;
   private String email;
   private LocalDate bookingDate;
   private int participants;
+  private String bookingActivity;
+  private String bookingEmployee;
 
-  @OneToMany
-  @JoinColumn(name = "activity_id")
-  @JsonBackReference
-  private Set<Activity> bookingActivity = new HashSet<>();
+//  @OneToMany
+//  @JoinColumn(name = "activity_id")
+//  @JsonBackReference
+//  private Set<Activity> bookingActivity = new HashSet<>();
+//
+//  @OneToMany
+//  @JoinColumn(name = "employee_id")
+//  private Set<Employee> bookingEmployee = new HashSet<>();
 
-  @OneToMany
-  @JoinColumn(name = "employee_id")
-  private Set<Employee> bookingEmployee = new HashSet<>();
-
-  public String getBookingId() {
+  public int getBookingId() {
     return bookingId;
   }
 
-  public void setBookingId(String bookingId) {
+  public void setBookingId(int bookingId) {
     this.bookingId = bookingId;
   }
 
@@ -77,45 +80,76 @@ public class Booking {
     this.participants = participants;
   }
 
-  public Set<Activity> getBookingActivity() {
+  public String getBookingActivity() {
     return bookingActivity;
   }
 
-  public void setBookingActivity(Set<Activity> bookingActivity) {
+  public void setBookingActivity(String bookingActivity) {
     this.bookingActivity = bookingActivity;
   }
 
-  public Set<Employee> getBookingEmployee() {
+  public String getBookingEmployee() {
     return bookingEmployee;
   }
 
-  public void setBookingEmployee(Set<Employee> bookingEmployee) {
+  public void setBookingEmployee(String bookingEmployee) {
     this.bookingEmployee = bookingEmployee;
   }
 
+  //  public Set<Activity> getBookingActivity() {
+//    return bookingActivity;
+//  }
+//
+//  public void setBookingActivity(Set<Activity> bookingActivity) {
+//    this.bookingActivity = bookingActivity;
+//  }
+//
+//  public Set<Employee> getBookingEmployee() {
+//    return bookingEmployee;
+//  }
+//
+//  public void setBookingEmployee(Set<Employee> bookingEmployee) {
+//    this.bookingEmployee = bookingEmployee;
+//  }
+
   @Override
   public String toString() {
-    return "Booking{"
-        + "bookingId='"
-        + bookingId
-        + '\''
-        + ", fullName='"
-        + fullName
-        + '\''
-        + ", phoneNumber='"
-        + phoneNumber
-        + '\''
-        + ", email='"
-        + email
-        + '\''
-        + ", bookingDate="
-        + bookingDate
-        + ", participants="
-        + participants
-        + ", bookingActivity="
-        + bookingActivity
-        + ", bookingEmployee="
-        + bookingEmployee
-        + '}';
+    return "Booking{" +
+        "bookingId=" + bookingId +
+        ", fullName='" + fullName + '\'' +
+        ", phoneNumber='" + phoneNumber + '\'' +
+        ", email='" + email + '\'' +
+        ", bookingDate=" + bookingDate +
+        ", participants=" + participants +
+        ", bookingActivity='" + bookingActivity + '\'' +
+        ", bookingEmployee='" + bookingEmployee + '\'' +
+        '}';
   }
+
+
+//  @Override
+//  public String toString() {
+//    return "Booking{"
+//        + "bookingId='"
+//        + bookingId
+//        + '\''
+//        + ", fullName='"
+//        + fullName
+//        + '\''
+//        + ", phoneNumber='"
+//        + phoneNumber
+//        + '\''
+//        + ", email='"
+//        + email
+//        + '\''
+//        + ", bookingDate="
+//        + bookingDate
+//        + ", participants="
+//        + participants
+//        + ", bookingActivity="
+//        + bookingActivity
+//        + ", bookingEmployee="
+//        + bookingEmployee
+//        + '}';
+//  }
 }
