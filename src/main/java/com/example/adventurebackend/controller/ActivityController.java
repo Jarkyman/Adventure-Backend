@@ -10,4 +10,10 @@ public class ActivityController {
   public String test() {
     return "Hello Activity";
   }
+
+  //  @PostMapping("/adventure")
+  //  public String adventure() {
+  //  return
+  //  }
+
 }

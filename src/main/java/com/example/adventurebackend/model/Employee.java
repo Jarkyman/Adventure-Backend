@@ -1,26 +1,41 @@
 package com.example.adventurebackend.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Employee {
 
   @Id
   @Column(name = "employee_id")
-  private String employeeId;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int employeeId;
 
+  @Column(nullable = false)
   private String employeeFirstName;
+
+  @Column(nullable = false)
   private String employeeLastName;
+
+  @Column(nullable = false)
   private String employeePhoneNumber;
+
+  @Column(nullable = false)
   private String employeeTitle;
 
-  public String getEmployeeId() {
+  @OneToMany
+  @JoinColumn(name = "employee_id")
+  @JsonBackReference
+  private Set<Booking> booking = new HashSet<>();
+
+  public int getEmployeeId() {
     return employeeId;
   }
 
-  public void setEmployeeId(String employeeId) {
+  public void setEmployeeId(int employeeId) {
     this.employeeId = employeeId;
   }
 
@@ -56,12 +71,19 @@ public class Employee {
     this.employeeTitle = employeeTitle;
   }
 
+  public Set<Booking> getBooking() {
+    return booking;
+  }
+
+  public void setBooking(Set<Booking> booking) {
+    this.booking = booking;
+  }
+
   @Override
   public String toString() {
     return "Employee{"
-        + "employeeId='"
+        + "employeeId="
         + employeeId
-        + '\''
         + ", employeeFirstName='"
         + employeeFirstName
         + '\''
@@ -74,6 +96,8 @@ public class Employee {
         + ", employeeTitle='"
         + employeeTitle
         + '\''
+        + ", booking="
+        + booking
         + '}';
   }
 }

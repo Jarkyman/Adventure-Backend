@@ -4,36 +4,45 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Booking {
 
   @Id
   @Column(name = "booking_id")
-  private String bookingId;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int bookingId;
 
+  @Column(nullable = false)
   private String fullName;
+
+  @Column(nullable = false)
   private String phoneNumber;
+
+  @Column(nullable = false)
   private String email;
+
+  @Column(nullable = false)
   private LocalDate bookingDate;
+
+  @Column(nullable = false)
   private int participants;
 
-  @OneToMany
+  @ManyToOne
   @JoinColumn(name = "activity_id")
   @JsonBackReference
-  private Set<Activity> bookingActivity = new HashSet<>();
+  private Activity activity;
 
-  @OneToMany
+  @ManyToOne
   @JoinColumn(name = "employee_id")
-  private Set<Employee> bookingEmployee = new HashSet<>();
+  @JsonBackReference
+  private Employee employee;
 
-  public String getBookingId() {
+  public int getBookingId() {
     return bookingId;
   }
 
-  public void setBookingId(String bookingId) {
+  public void setBookingId(int bookingId) {
     this.bookingId = bookingId;
   }
 
@@ -77,28 +86,27 @@ public class Booking {
     this.participants = participants;
   }
 
-  public Set<Activity> getBookingActivity() {
-    return bookingActivity;
+  public Activity getActivity() {
+    return activity;
   }
 
-  public void setBookingActivity(Set<Activity> bookingActivity) {
-    this.bookingActivity = bookingActivity;
+  public void setActivity(Activity activity) {
+    this.activity = activity;
   }
 
-  public Set<Employee> getBookingEmployee() {
-    return bookingEmployee;
+  public Employee getEmployee() {
+    return employee;
   }
 
-  public void setBookingEmployee(Set<Employee> bookingEmployee) {
-    this.bookingEmployee = bookingEmployee;
+  public void setEmployee(Employee employee) {
+    this.employee = employee;
   }
 
   @Override
   public String toString() {
     return "Booking{"
-        + "bookingId='"
+        + "bookingId="
         + bookingId
-        + '\''
         + ", fullName='"
         + fullName
         + '\''
@@ -112,10 +120,10 @@ public class Booking {
         + bookingDate
         + ", participants="
         + participants
-        + ", bookingActivity="
-        + bookingActivity
-        + ", bookingEmployee="
-        + bookingEmployee
+        + ", activity="
+        + activity
+        + ", employee="
+        + employee
         + '}';
   }
 }
