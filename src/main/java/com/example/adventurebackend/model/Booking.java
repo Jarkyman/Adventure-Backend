@@ -1,12 +1,9 @@
 package com.example.adventurebackend.model;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +21,7 @@ public class Booking {
   private int participants;
 
   @OneToMany
-  @JoinColumn(name="activity_id")
+  @JoinColumn(name = "activity_id")
   @JsonBackReference
   private Set<Activity> bookingActivity = new HashSet<>();
 
