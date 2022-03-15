@@ -8,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 
 public class InitData implements CommandLineRunner {
 
-
   @Autowired EmployeeRepository employeeRepository;
 
   @Autowired ActivityRepository activityRepository;
