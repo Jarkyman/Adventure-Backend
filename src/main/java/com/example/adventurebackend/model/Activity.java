@@ -1,15 +1,14 @@
 package com.example.adventurebackend.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Activity {
 
   @Id
   @Column(name="activity_id")
-
+//  @ManyToOne
+//  @JoinColumn(name="booking_id")
   private String activityId;
   private String activityTitle;
   private double activityPriceOneHour;
