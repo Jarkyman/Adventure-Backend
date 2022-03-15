@@ -1,10 +1,8 @@
 package com.example.adventurebackend.model;
 
-<<<<<<< HEAD
-import com.fasterxml.jackson.annotation.JsonBackReference;
-=======
 
->>>>>>> 08c14def494b1e96a9be1b6b7c6d43e470cc4642
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -12,11 +10,7 @@ import java.time.LocalDate;
 public class Booking {
 
   @Id
-<<<<<<< HEAD
   @Column(name = "booking_id")
-=======
-  //  @Column(name = "booking_id")
->>>>>>> 08c14def494b1e96a9be1b6b7c6d43e470cc4642
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int bookingId;
 
@@ -34,7 +28,6 @@ public class Booking {
 
   @Column(nullable = false)
   private int participants;
-<<<<<<< HEAD
 
   @ManyToOne
   @JoinColumn(name = "activity_id")
@@ -46,19 +39,6 @@ public class Booking {
   @JsonBackReference
   private Employee employee;
 
-=======
-  private String bookingActivity;
-  private String bookingEmployee;
-
-  //  @OneToMany
-  //  @JoinColumn(name = "activity_id")
-  //  @JsonBackReference
-  //  private Set<Activity> bookingActivity = new HashSet<>();
-  //
-  //  @OneToMany
-  //  @JoinColumn(name = "employee_id")
-  //  private Set<Employee> bookingEmployee = new HashSet<>();
->>>>>>> 08c14def494b1e96a9be1b6b7c6d43e470cc4642
 
   public int getBookingId() {
     return bookingId;
@@ -124,7 +104,6 @@ public class Booking {
     this.employee = employee;
   }
 
-<<<<<<< HEAD
   @Override
   public String toString() {
     return "Booking{" +
@@ -138,74 +117,4 @@ public class Booking {
         ", employee=" + employee +
         '}';
   }
-=======
-  //  public Set<Activity> getBookingActivity() {
-  //    return bookingActivity;
-  //  }
-  //
-  //  public void setBookingActivity(Set<Activity> bookingActivity) {
-  //    this.bookingActivity = bookingActivity;
-  //  }
-  //
-  //  public Set<Employee> getBookingEmployee() {
-  //    return bookingEmployee;
-  //  }
-  //
-  //  public void setBookingEmployee(Set<Employee> bookingEmployee) {
-  //    this.bookingEmployee = bookingEmployee;
-  //  }
-
-  @Override
-  public String toString() {
-    return "Booking{"
-        + "bookingId="
-        + bookingId
-        + ", fullName='"
-        + fullName
-        + '\''
-        + ", phoneNumber='"
-        + phoneNumber
-        + '\''
-        + ", email='"
-        + email
-        + '\''
-        + ", bookingDate="
-        + bookingDate
-        + ", participants="
-        + participants
-        + ", bookingActivity='"
-        + bookingActivity
-        + '\''
-        + ", bookingEmployee='"
-        + bookingEmployee
-        + '\''
-        + '}';
-  }
-
-  //  @Override
-  //  public String toString() {
-  //    return "Booking{"
-  //        + "bookingId='"
-  //        + bookingId
-  //        + '\''
-  //        + ", fullName='"
-  //        + fullName
-  //        + '\''
-  //        + ", phoneNumber='"
-  //        + phoneNumber
-  //        + '\''
-  //        + ", email='"
-  //        + email
-  //        + '\''
-  //        + ", bookingDate="
-  //        + bookingDate
-  //        + ", participants="
-  //        + participants
-  //        + ", bookingActivity="
-  //        + bookingActivity
-  //        + ", bookingEmployee="
-  //        + bookingEmployee
-  //        + '}';
-  //  }
->>>>>>> 08c14def494b1e96a9be1b6b7c6d43e470cc4642
 }
