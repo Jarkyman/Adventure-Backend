@@ -6,13 +6,7 @@ import javax.persistence.*;
 public class Activity {
 
   @Id
-<<<<<<< HEAD
-  @Column(name="activity_id")
-//  @ManyToOne
-//  @JoinColumn(name="booking_id")
-=======
   @Column(name = "activity_id")
->>>>>>> 3f2b16203799271da00f3e711b8fb44c1299936e
   private String activityId;
 
   private String activityTitle;

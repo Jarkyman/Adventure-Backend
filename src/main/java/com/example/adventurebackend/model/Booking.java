@@ -1,6 +1,8 @@
 package com.example.adventurebackend.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,13 +24,8 @@ public class Booking {
   private int participants;
 
   @OneToMany
-<<<<<<< HEAD
   @JoinColumn(name="activity_id")
   @JsonBackReference
-=======
-  @JoinColumn(name = "activity_id")
-  //  @JsonBackReference
->>>>>>> 3f2b16203799271da00f3e711b8fb44c1299936e
   private Set<Activity> bookingActivity = new HashSet<>();
 
   @OneToMany
