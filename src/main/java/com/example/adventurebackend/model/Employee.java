@@ -1,6 +1,7 @@
 package com.example.adventurebackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class Employee {
 
   @OneToMany
   @JoinColumn(name = "employee_id")
-  @JsonBackReference
+  @JsonIgnore
   private Set<Booking> booking = new HashSet<>();
 
   public int getEmployeeId() {

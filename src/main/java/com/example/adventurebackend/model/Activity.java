@@ -1,6 +1,7 @@
 package com.example.adventurebackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,7 +23,7 @@ public class Activity {
 
   @OneToMany
   @JoinColumn(name = "activity_id")
-  @JsonBackReference
+  @JsonIgnore
   private Set<Booking> booking = new HashSet<>();
 
   public int getActivityId() {
