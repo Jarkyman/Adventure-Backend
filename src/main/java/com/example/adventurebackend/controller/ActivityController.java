@@ -32,9 +32,4 @@ public class ActivityController {
     return activityRepository.save(activity);
   }
 
- /* @PostMapping(value="/activity", consumes = "application/json")
-  public ResponseEntity<Activity> newActivity (@RequestBody Activity activity){
-    activityRepository.save(activity);
-    return new ResponseEntity<Activity>(activity, HttpStatus.CREATED);
-  }*/
 }
