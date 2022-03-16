@@ -57,7 +57,7 @@ class ActivityControllerTest {
   }
 
   @Test
-  public void testGetJPAConnectionToDatebase2() { //TODO den skal hedde noget andet
+  public void testGetJPAConnectionToDatebase2() { // TODO den skal hedde noget andet
     assertEquals(activityRepository, activityRepository2);
   }
 }
