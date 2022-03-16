@@ -4,7 +4,6 @@ import com.example.adventurebackend.model.Activity;
 import com.example.adventurebackend.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class ActivityController {
     return activityRepository.save(activity);
   }
 
- /* @PostMapping(value="/activity", consumes = "application/json")
+  /* @PostMapping(value="/activity", consumes = "application/json")
   public ResponseEntity<Activity> newActivity (@RequestBody Activity activity){
     activityRepository.save(activity);
     return new ResponseEntity<Activity>(activity, HttpStatus.CREATED);
