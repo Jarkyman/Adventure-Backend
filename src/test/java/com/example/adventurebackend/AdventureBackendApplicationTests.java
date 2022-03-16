@@ -7,5 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AdventureBackendApplicationTests {
 
   @Test
-  void contextLoads() {}
+  void contextLoads() {
+
+  }
+
 }
