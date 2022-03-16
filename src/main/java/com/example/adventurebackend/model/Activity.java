@@ -17,6 +17,7 @@ public class Activity {
   @Column(nullable = false)
   private String activityTitle;
 
+
   @Column(nullable = false)
   private double activityPriceOneHour;
 
