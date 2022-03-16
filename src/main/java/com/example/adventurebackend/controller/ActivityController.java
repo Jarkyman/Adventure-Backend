@@ -30,5 +30,4 @@ public class ActivityController {
     System.out.println(activity);
     return activityRepository.save(activity);
   }
-
 }
