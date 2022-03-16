@@ -2,12 +2,8 @@ package com.example.adventurebackend.controller;
 
 import com.example.adventurebackend.model.Activity;
 import com.example.adventurebackend.repository.ActivityRepository;
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,10 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class ActivityControllerTest {
 
-  @Autowired
-  ActivityRepository activityRepository;
+  @Autowired ActivityRepository activityRepository;
   ActivityRepository activityRepository2;
-
 
   @Test
   public void createActivity_GivenCorrectActivityInfo() {
@@ -49,10 +43,9 @@ class ActivityControllerTest {
   public void test_getJPAConnectionToDatebase() {
     assertNotNull(activityRepository);
   }
+
   @Test
   public void test_getJPAConnectionToDatebase2() {
-    assertEquals(activityRepository,activityRepository2);
+    assertEquals(activityRepository, activityRepository2);
   }
-
-
 }
