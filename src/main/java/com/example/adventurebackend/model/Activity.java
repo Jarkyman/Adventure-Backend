@@ -25,7 +25,6 @@ public class Activity {
   @JsonIgnore
   private Set<Booking> booking = new HashSet<>();
 
-
   public String getActivityTitle() {
     return activityTitle;
   }
@@ -50,7 +49,6 @@ public class Activity {
     this.booking = booking;
   }
 
-
   public int getActivityId() {
     return activityId;
   }
@@ -61,11 +59,16 @@ public class Activity {
 
   @Override
   public String toString() {
-    return "Activity{" +
-        "activityId=" + activityId +
-        ", activityTitle='" + activityTitle + '\'' +
-        ", activityPriceOneHour=" + activityPriceOneHour +
-        ", booking=" + booking +
-        '}';
+    return "Activity{"
+        + "activityId="
+        + activityId
+        + ", activityTitle='"
+        + activityTitle
+        + '\''
+        + ", activityPriceOneHour="
+        + activityPriceOneHour
+        + ", booking="
+        + booking
+        + '}';
   }
 }

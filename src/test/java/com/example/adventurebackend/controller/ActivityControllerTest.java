@@ -13,10 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class ActivityControllerTest {
 
-  @Autowired
-  ActivityRepository activityRepository;
-  @Autowired
-  ActivityRepository activityRepository2;
+  @Autowired ActivityRepository activityRepository;
+  @Autowired ActivityRepository activityRepository2;
 
   @Test
   public void testCreateActivityGivenCorrectActivityObject() {
@@ -64,25 +62,20 @@ class ActivityControllerTest {
     Activity activityUpdate = activityRepository.save(activity1);
     Assertions.assertThat(activityUpdate.getActivityTitle()).isEqualTo("nøgenløb");
 
-    //For at få orginal titlen tilbage igen efter testen
+    // For at få orginal titlen tilbage igen efter testen
     Activity activityRestore = activityRepository.findById(1).get();
     activityRestore.setActivityTitle("goCart");
     Activity activityUpdate1 = activityRepository.save(activityRestore);
     Assertions.assertThat(activityUpdate1.getActivityTitle()).isEqualTo("goCart");
-
   }
-
 
   @Test
   public void testGetJPAConnectionToDatebase() {
     assertNotNull(activityRepository);
   }
 
-
   @Test
   public void testSameConnectionOnNewRepoSingleton() {
     assertEquals(activityRepository, activityRepository2);
   }
-
-
 }
