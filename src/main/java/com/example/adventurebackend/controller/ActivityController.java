@@ -33,17 +33,17 @@ public class ActivityController {
   }
 
   @PutMapping("/update/activity/{id}")
-  public ResponseEntity<Activity> updateActivity(@PathVariable("id") Long id, @RequestBody Activity activity) {
+  public ResponseEntity<Activity> updateActivity(
+      @PathVariable("id") Long id, @RequestBody Activity activity) {
     activity.setActivityId(id);
     Optional<Activity> optionalActivity = activityRepository.findById(id);
     if (optionalActivity.isPresent()) {
       activityRepository.save(activity);
       return new ResponseEntity<Activity>(activity, HttpStatus.OK);
-    }  else {
+    } else {
       Activity notFound = new Activity();
       notFound.setActivityTitle("Not found by id: " + id);
       return new ResponseEntity<Activity>(notFound, HttpStatus.NOT_FOUND);
     }
   }
-
 }
