@@ -12,7 +12,7 @@ public class Activity {
   @Id
   @Column(name = "activity_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int activityId;
+  private Long activityId;
 
   @Column(nullable = false)
   private String activityTitle;
@@ -25,11 +25,11 @@ public class Activity {
   @JsonIgnore
   private Set<Booking> booking = new HashSet<>();
 
-  public int getActivityId() {
+  public Long getActivityId() {
     return activityId;
   }
 
-  public void setActivityId(int activityId) {
+  public void setActivityId(Long activityId) {
     this.activityId = activityId;
   }
 
