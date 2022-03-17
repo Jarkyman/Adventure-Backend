@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// @DataJpaTest // Den hjælper med CRUD
 @SpringBootTest
 class ActivityControllerTest {
 
@@ -25,6 +26,7 @@ class ActivityControllerTest {
     assertTrue(newActivity.getActivityId() != 0);
     assertEquals("Test-Create-Activity", newActivity.getActivityTitle());
     assertEquals(500, newActivity.getActivityPriceOneHour());
+    activityRepository.delete(newActivity);
   }
 
   @Test
@@ -37,6 +39,7 @@ class ActivityControllerTest {
     assertTrue(newActivity.getActivityId() != 0);
     assertNotEquals("WrongTitle", newActivity.getActivityTitle());
     assertEquals(500, newActivity.getActivityPriceOneHour());
+    activityRepository.delete(newActivity);
   }
 
   @Test
@@ -49,6 +52,7 @@ class ActivityControllerTest {
     assertTrue(newActivity.getActivityId() != 0);
     assertEquals("TestTitle", newActivity.getActivityTitle());
     assertNotEquals(500, newActivity.getActivityPriceOneHour());
+    activityRepository.delete(newActivity);
   }
 
   @Test
