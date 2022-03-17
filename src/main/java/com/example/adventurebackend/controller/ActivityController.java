@@ -27,7 +27,6 @@ public class ActivityController {
   @PostMapping("/create/activity")
   @ResponseStatus(HttpStatus.CREATED)
   public Activity postActivity(@RequestBody Activity activity) {
-    System.out.println(activity);
     return activityRepository.save(activity);
   }
 }
