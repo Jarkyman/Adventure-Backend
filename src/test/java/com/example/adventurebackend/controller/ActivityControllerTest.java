@@ -31,7 +31,6 @@ class ActivityControllerTest {
     assertEquals("Test-Create-Activity", newActivity.getActivityTitle());
     assertEquals(500, newActivity.getActivityPriceOneHour());
     activityRepository.delete(newActivity);
-    activityRepository.delete(newActivity);
   }
 
   @Test
