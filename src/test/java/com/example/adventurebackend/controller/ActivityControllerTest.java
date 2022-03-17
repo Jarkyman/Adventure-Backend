@@ -16,13 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class ActivityControllerTest {
 
-  @Autowired
-  ActivityRepository activityRepository;
-  @Autowired
-  ActivityRepository activityRepository2;
+
+  @Autowired ActivityRepository activityRepository;
+  @Autowired ActivityRepository activityRepository2;
 
   @Test
-  public void createActivity_GivenCorrectActivityInfo() {
+  public void testCreateActivityGivenCorrectActivityObject() {
     Activity activity1 = new Activity();
     activity1.setActivityTitle("Test-Create-Activity");
     activity1.setActivityPriceOneHour(500);
@@ -32,28 +31,42 @@ class ActivityControllerTest {
     assertEquals("Test-Create-Activity", newActivity.getActivityTitle());
     assertEquals(500, newActivity.getActivityPriceOneHour());
     activityRepository.delete(newActivity);
-  }
-
-  @Test
-  public void createActivity_GivenIncorrectActivityInfo() {
-    Activity activity1 = new Activity();
-    activity1.setActivityTitle("Test-Increate-Activity");
-    activity1.setActivityPriceOneHour(500);
-    Activity newActivity = activityRepository.save(activity1);
-
-    assertTrue(newActivity.getActivityId() != 0);
-    assertNotEquals("Test-Create-Activity", newActivity.getActivityTitle());
-    assertNotEquals(400, newActivity.getActivityPriceOneHour());
     activityRepository.delete(newActivity);
   }
 
   @Test
-  public void test_getJPAConnectionToDatebase() {
+  public void testCreateActivityGivenIncorrectActivityTitle() {
+    Activity activity1 = new Activity();
+    activity1.setActivityTitle("TestTitle");
+    activity1.setActivityPriceOneHour(500);
+    Activity newActivity = activityRepository.save(activity1);
+
+    assertTrue(newActivity.getActivityId() != 0);
+    assertNotEquals("WrongTitle", newActivity.getActivityTitle());
+    assertEquals(500, newActivity.getActivityPriceOneHour());
+    activityRepository.delete(newActivity);
+  }
+
+  @Test
+  public void testCreateActivityGivenIncorrectActivityPriceOneHour() {
+    Activity activity1 = new Activity();
+    activity1.setActivityTitle("TestTitle");
+    activity1.setActivityPriceOneHour(700);
+    Activity newActivity = activityRepository.save(activity1);
+
+    assertTrue(newActivity.getActivityId() != 0);
+    assertEquals("TestTitle", newActivity.getActivityTitle());
+    assertNotEquals(500, newActivity.getActivityPriceOneHour());
+    activityRepository.delete(newActivity);
+  }
+
+  @Test
+  public void testGetJPAConnectionToDatebase() {
     assertNotNull(activityRepository);
   }
 
   @Test
-  public void test_getJPAConnectionToDatebase2() {
+  public void testSameConnectionOnNewRepoSingleton() {
     assertEquals(activityRepository, activityRepository2);
   }
 
