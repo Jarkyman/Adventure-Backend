@@ -2,20 +2,16 @@ package com.example.adventurebackend.controller;
 
 import com.example.adventurebackend.model.Activity;
 import com.example.adventurebackend.repository.ActivityRepository;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@DataJpaTest // Den hjælper med CRUD
+// @DataJpaTest // Den hjælper med CRUD
 @SpringBootTest
 class ActivityControllerTest {
-
 
   @Autowired ActivityRepository activityRepository;
   @Autowired ActivityRepository activityRepository2;
@@ -69,5 +65,4 @@ class ActivityControllerTest {
   public void testSameConnectionOnNewRepoSingleton() {
     assertEquals(activityRepository, activityRepository2);
   }
-
 }
