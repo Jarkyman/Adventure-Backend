@@ -34,7 +34,8 @@ public class ActivityController {
 
   @PutMapping("/update/activity/{id}")
   public ResponseEntity<Activity> updateActivity(
-      @PathVariable("id") Long id, @RequestBody Activity activity) {
+//      @PathVariable("id") Long id, @RequestBody Activity activity) {
+      @PathVariable("id") int id, @RequestBody Activity activity) {
     activity.setActivityId(id);
     Optional<Activity> optionalActivity = activityRepository.findById(id);
     if (optionalActivity.isPresent()) {

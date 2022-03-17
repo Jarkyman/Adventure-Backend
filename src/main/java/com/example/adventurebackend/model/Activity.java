@@ -12,7 +12,7 @@ public class Activity {
   @Id
   @Column(name = "activity_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long activityId;
+  private int activityId;
 
   @Column(nullable = false)
   private String activityTitle;
@@ -25,13 +25,6 @@ public class Activity {
   @JsonIgnore
   private Set<Booking> booking = new HashSet<>();
 
-  public Long getActivityId() {
-    return activityId;
-  }
-
-  public void setActivityId(Long activityId) {
-    this.activityId = activityId;
-  }
 
   public String getActivityTitle() {
     return activityTitle;
@@ -57,18 +50,22 @@ public class Activity {
     this.booking = booking;
   }
 
+
+  public int getActivityId() {
+    return activityId;
+  }
+
+  public void setActivityId(int activityId) {
+    this.activityId = activityId;
+  }
+
   @Override
   public String toString() {
-    return "Activity{"
-        + "activityId="
-        + activityId
-        + ", activityTitle='"
-        + activityTitle
-        + '\''
-        + ", activityPriceOneHour="
-        + activityPriceOneHour
-        + ", booking="
-        + booking
-        + '}';
+    return "Activity{" +
+        "activityId=" + activityId +
+        ", activityTitle='" + activityTitle + '\'' +
+        ", activityPriceOneHour=" + activityPriceOneHour +
+        ", booking=" + booking +
+        '}';
   }
 }
