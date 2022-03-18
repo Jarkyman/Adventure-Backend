@@ -16,11 +16,6 @@ public class ActivityController {
 
   @Autowired ActivityRepository activityRepository;
 
-  @GetMapping("/activity")
-  public String test() {
-    return "Hello Activity";
-  }
-
   @GetMapping("/activities")
   public List<Activity> getAllActivities() {
     return activityRepository.findAll();
@@ -31,10 +26,9 @@ public class ActivityController {
   public Activity postActivity(@RequestBody Activity activity) {
     return activityRepository.save(activity);
   }
-
+  //      @PathVariable("id") Long id, @RequestBody Activity activity) {
   @PutMapping("/update/activity/{id}")
   public ResponseEntity<Activity> updateActivity(
-      //      @PathVariable("id") Long id, @RequestBody Activity activity) {
       @PathVariable("id") int id, @RequestBody Activity activity) {
     activity.setActivityId(id);
     Optional<Activity> optionalActivity = activityRepository.findById(id);
