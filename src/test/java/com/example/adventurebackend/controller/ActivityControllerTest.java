@@ -14,10 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class ActivityControllerTest {
 
-  @Autowired
-  ActivityRepository activityRepository;
-  @Autowired
-  ActivityRepository activityRepository2;
+  @Autowired ActivityRepository activityRepository;
+  @Autowired ActivityRepository activityRepository2;
 
   @Test
   public void testCreateActivityGivenCorrectActivityObject() {
@@ -74,12 +72,12 @@ class ActivityControllerTest {
 
   @Test
   public void testUpdateActivity_ActivityPriceOneHour() {
-    //Arrange
+    // Arrange
     Activity activity1 = activityRepository.findById(1).get();
     activity1.setActivityPriceOneHour(500);
-    //Act
+    // Act
     Activity activityUpdate = activityRepository.save(activity1);
-    //Assert
+    // Assert
     Assertions.assertThat(activityUpdate.getActivityPriceOneHour()).isEqualTo(500);
 
     // For at få orginal price tilbage igen efter testen
