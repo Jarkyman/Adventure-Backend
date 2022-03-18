@@ -20,7 +20,6 @@ class ActivityControllerTest {
   @Autowired ActivityRepository activityRepository2;
   @Autowired ActivityController activityController;
 
-
   @Test
   public void testCreateActivityGivenCorrectActivityObject() {
     Activity activity = new Activity();
