@@ -6,6 +6,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,8 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class ActivityControllerTest {
 
-  @Autowired ActivityRepository activityRepository;
-  @Autowired ActivityRepository activityRepository2;
+  @Autowired
+  ActivityRepository activityRepository;
+  @Autowired
+  ActivityRepository activityRepository2;
 
   @Test
   public void testCreateActivityGivenCorrectActivityObject() {
@@ -56,7 +59,7 @@ class ActivityControllerTest {
   }
 
   @Test
-  public void updateActivity() {
+  public void testUpdateActivity_ActivityTitle() {
     Activity activity1 = activityRepository.findById(1).get();
     activity1.setActivityTitle("nøgenløb");
     Activity activityUpdate = activityRepository.save(activity1);
@@ -67,6 +70,23 @@ class ActivityControllerTest {
     activityRestore.setActivityTitle("goCart");
     Activity activityUpdate1 = activityRepository.save(activityRestore);
     Assertions.assertThat(activityUpdate1.getActivityTitle()).isEqualTo("goCart");
+  }
+
+  @Test
+  public void testUpdateActivity_ActivityPriceOneHour() {
+    //Arrange
+    Activity activity1 = activityRepository.findById(1).get();
+    activity1.setActivityPriceOneHour(500);
+    //Act
+    Activity activityUpdate = activityRepository.save(activity1);
+    //Assert
+    Assertions.assertThat(activityUpdate.getActivityPriceOneHour()).isEqualTo(500);
+
+    // For at få orginal price tilbage igen efter testen
+    Activity activityRestore = activityRepository.findById(1).get();
+    activityRestore.setActivityPriceOneHour(900);
+    Activity activityUpdate1 = activityRepository.save(activityRestore);
+    Assertions.assertThat(activityUpdate1.getActivityPriceOneHour()).isEqualTo(900);
   }
 
   @Test
