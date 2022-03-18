@@ -2,10 +2,10 @@ package com.example.adventurebackend.controller;
 
 import com.example.adventurebackend.model.Activity;
 import com.example.adventurebackend.repository.ActivityRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -53,6 +53,20 @@ class ActivityControllerTest {
     assertEquals("TestTitle", newActivity.getActivityTitle());
     assertNotEquals(500, newActivity.getActivityPriceOneHour());
     activityRepository.delete(newActivity);
+  }
+
+  @Test
+  public void updateActivity() {
+    Activity activity1 = activityRepository.findById(1).get();
+    activity1.setActivityTitle("nøgenløb");
+    Activity activityUpdate = activityRepository.save(activity1);
+    Assertions.assertThat(activityUpdate.getActivityTitle()).isEqualTo("nøgenløb");
+
+    // For at få orginal titlen tilbage igen efter testen
+    Activity activityRestore = activityRepository.findById(1).get();
+    activityRestore.setActivityTitle("goCart");
+    Activity activityUpdate1 = activityRepository.save(activityRestore);
+    Assertions.assertThat(activityUpdate1.getActivityTitle()).isEqualTo("goCart");
   }
 
   @Test
