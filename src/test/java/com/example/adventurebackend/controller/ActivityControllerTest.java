@@ -5,24 +5,38 @@ import com.example.adventurebackend.repository.ActivityRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// @DataJpaTest // Den hjælper med CRUD
+//@DataJpaTest // Den hjælper med CRUD
 @SpringBootTest
 class ActivityControllerTest {
 
-  @Autowired ActivityRepository activityRepository;
-  @Autowired ActivityRepository activityRepository2;
+  @Autowired
+  ActivityRepository activityRepository;
+  @Autowired
+  ActivityRepository activityRepository2;
+  @Autowired
+  ActivityController activityController;
+
+  @Test
+  void getAllActivities() {
+
+  }
 
   @Test
   public void testCreateActivityGivenCorrectActivityObject() {
-    Activity activity1 = new Activity();
-    activity1.setActivityTitle("Test-Create-Activity");
-    activity1.setActivityPriceOneHour(500);
-    Activity newActivity = activityRepository.save(activity1);
+    Activity activity = new Activity();
+    activity.setActivityTitle("Test-Create-Activity");
+    activity.setActivityPriceOneHour(500);
+
+    Activity newActivity = activityController.postActivity(activity);
 
     assertTrue(newActivity.getActivityId() != 0);
     assertEquals("Test-Create-Activity", newActivity.getActivityTitle());
@@ -32,10 +46,11 @@ class ActivityControllerTest {
 
   @Test
   public void testCreateActivityGivenIncorrectActivityTitle() {
-    Activity activity1 = new Activity();
-    activity1.setActivityTitle("TestTitle");
-    activity1.setActivityPriceOneHour(500);
-    Activity newActivity = activityRepository.save(activity1);
+    Activity activity = new Activity();
+    activity.setActivityTitle("TestTitle");
+    activity.setActivityPriceOneHour(500);
+
+    Activity newActivity = activityController.postActivity(activity);
 
     assertTrue(newActivity.getActivityId() != 0);
     assertNotEquals("WrongTitle", newActivity.getActivityTitle());
@@ -45,10 +60,11 @@ class ActivityControllerTest {
 
   @Test
   public void testCreateActivityGivenIncorrectActivityPriceOneHour() {
-    Activity activity1 = new Activity();
-    activity1.setActivityTitle("TestTitle");
-    activity1.setActivityPriceOneHour(700);
-    Activity newActivity = activityRepository.save(activity1);
+    Activity activity = new Activity();
+    activity.setActivityTitle("TestTitle");
+    activity.setActivityPriceOneHour(700);
+
+    Activity newActivity = activityController.postActivity(activity);
 
     assertTrue(newActivity.getActivityId() != 0);
     assertEquals("TestTitle", newActivity.getActivityTitle());
@@ -57,35 +73,44 @@ class ActivityControllerTest {
   }
 
   @Test
-  public void testUpdateActivity_ActivityTitle() {
-    Activity activity1 = activityRepository.findById(1).get();
-    activity1.setActivityTitle("nøgenløb");
-    Activity activityUpdate = activityRepository.save(activity1);
-    Assertions.assertThat(activityUpdate.getActivityTitle()).isEqualTo("nøgenløb");
+  public void testUpdateActivityActivityTitle() {
+    int activityId = 1;
+    Activity activityOld = activityRepository.findById(activityId).get();
+    activityOld.setActivityTitle("nøgenløb");
+
+    ResponseEntity<Activity> activityUpdate = activityController.updateActivity(activityId, activityOld);
+    Activity activityUpdated = activityRepository.findById(activityId).get();
+
+    assertEquals(activityOld.getActivityTitle(), activityUpdated.getActivityTitle());
+    assertEquals(activityUpdate.getStatusCode(), HttpStatus.OK);
+
 
     // For at få orginal titlen tilbage igen efter testen
-    Activity activityRestore = activityRepository.findById(1).get();
+    Activity activityRestore = activityRepository.findById(activityId).get();
     activityRestore.setActivityTitle("goCart");
     Activity activityUpdate1 = activityRepository.save(activityRestore);
     Assertions.assertThat(activityUpdate1.getActivityTitle()).isEqualTo("goCart");
   }
 
   @Test
-  public void testUpdateActivity_ActivityPriceOneHour() {
-    // Arrange
-    Activity activity1 = activityRepository.findById(1).get();
-    activity1.setActivityPriceOneHour(500);
-    // Act
-    Activity activityUpdate = activityRepository.save(activity1);
-    // Assert
-    Assertions.assertThat(activityUpdate.getActivityPriceOneHour()).isEqualTo(500);
+  public void testUpdateActivityActivityPriceOneHour() {
+    int activityId = 1;
+    Activity activityOld = activityRepository.findById(activityId).get();
+    activityOld.setActivityPriceOneHour(500);
 
-    // For at få orginal price tilbage igen efter testen
-    Activity activityRestore = activityRepository.findById(1).get();
+    ResponseEntity<Activity> activityUpdate = activityController.updateActivity(activityId, activityOld);
+    Activity activityUpdated = activityRepository.findById(activityId).get();
+
+    assertEquals(activityOld.getActivityPriceOneHour(), activityUpdated.getActivityPriceOneHour());
+    assertEquals(activityUpdate.getStatusCode(), HttpStatus.OK);
+
+    // For at få orginal titlen tilbage igen efter testen
+    Activity activityRestore = activityRepository.findById(activityId).get();
     activityRestore.setActivityPriceOneHour(900);
     Activity activityUpdate1 = activityRepository.save(activityRestore);
     Assertions.assertThat(activityUpdate1.getActivityPriceOneHour()).isEqualTo(900);
   }
+
 
   @Test
   public void testGetJPAConnectionToDatebase() {
@@ -96,4 +121,6 @@ class ActivityControllerTest {
   public void testSameConnectionOnNewRepoSingleton() {
     assertEquals(activityRepository, activityRepository2);
   }
+
+
 }
