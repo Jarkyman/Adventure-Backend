@@ -43,6 +43,12 @@ public class ActivityController {
     }
   }
 
+  /**
+   * Delete a activity find by id, delete from database
+   *
+   * @param id activity id
+   * @return Entity msg if delete or not delete
+   */
   @DeleteMapping("/delete/activity/{id}")
   public ResponseEntity<String> deleteActivity(@PathVariable int id) {
     try {
