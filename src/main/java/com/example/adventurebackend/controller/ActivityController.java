@@ -26,19 +26,35 @@ public class ActivityController {
   public Activity postActivity(@RequestBody Activity activity) {
     return activityRepository.save(activity);
   }
-  //      @PathVariable("id") Long id, @RequestBody Activity activity) {
+
   @PutMapping("/update/activity/{id}")
   public ResponseEntity<Activity> updateActivity(
-      @PathVariable("id") int id, @RequestBody Activity activity) {
+      @PathVariable int id, @RequestBody Activity activity) {
     activity.setActivityId(id);
     Optional<Activity> optionalActivity = activityRepository.findById(id);
     if (optionalActivity.isPresent()) {
       activityRepository.save(activity);
-      return new ResponseEntity<Activity>(activity, HttpStatus.OK);
+      return new ResponseEntity<>(activity, HttpStatus.OK);
     } else {
       Activity notFound = new Activity();
       notFound.setActivityTitle("Not found by id: " + id);
-      return new ResponseEntity<Activity>(notFound, HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>(notFound, HttpStatus.NOT_FOUND);
+    }
+  }
+
+  /**
+   * Delete a activity find by id, delete from database
+   *
+   * @param id activity id
+   * @return Entity msg if delete or not delete
+   */
+  @DeleteMapping("/delete/activity/{id}")
+  public ResponseEntity<String> deleteActivity(@PathVariable int id) {
+    try {
+      activityRepository.deleteById(id);
+      return new ResponseEntity<>("delete id = " + id, HttpStatus.OK);
+    } catch (Exception err) {
+      return new ResponseEntity<>("Could not id at all = " + id, HttpStatus.NOT_FOUND);
     }
   }
 }
