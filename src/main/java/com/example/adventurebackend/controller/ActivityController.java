@@ -14,8 +14,7 @@ import java.util.Optional;
 @CrossOrigin
 public class ActivityController {
 
-  @Autowired
-  ActivityRepository activityRepository;
+  @Autowired ActivityRepository activityRepository;
 
   @GetMapping("/activities")
   public List<Activity> getAllActivities() {
@@ -28,9 +27,9 @@ public class ActivityController {
     return activityRepository.save(activity);
   }
 
-
   @PutMapping("/update/activity/{id}")
-  public ResponseEntity<Activity> updateActivity(@PathVariable int id, @RequestBody Activity activity) {
+  public ResponseEntity<Activity> updateActivity(
+      @PathVariable int id, @RequestBody Activity activity) {
     activity.setActivityId(id);
     Optional<Activity> optionalActivity = activityRepository.findById(id);
     if (optionalActivity.isPresent()) {
@@ -52,5 +51,4 @@ public class ActivityController {
       return new ResponseEntity<>("Could not id at all = " + id, HttpStatus.NOT_FOUND);
     }
   }
-
 }
