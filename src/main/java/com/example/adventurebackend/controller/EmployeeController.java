@@ -21,16 +21,32 @@ public class EmployeeController {
     return "Hej employees";
   }
 
+  /**
+   * List of employees
+   * @return all employees
+   */
   @GetMapping("/employees")
   public List<Employee> getAllEmployees() {
     return employeeRepository.findAll();
   }
 
+  /**
+   * Create employee
+   * @param employee
+   * @return employee to DB
+   */
   @PostMapping("/create/employee")
   @ResponseStatus(HttpStatus.CREATED)
   public Employee createEmployee(@RequestBody Employee employee) {
     return employeeRepository.save(employee);
   }
+
+  /**
+   * Being able to update any info under employee, but not the id
+   * @param id
+   * @param employee
+   * @return updated employee or failed to upload
+   */
 
   @PutMapping("/update/employee/{id}")
   public ResponseEntity<String> updateEmployee(
@@ -44,4 +60,21 @@ public class EmployeeController {
       return new ResponseEntity<>("Failed to update by id = " + id, HttpStatus.NOT_FOUND);
     }
   }
-}
+
+  /**
+   * Delete employee by id
+   * @param id
+   * @return if going as planned, employee gets deleted, otherwise it cant be found and wont be deleted
+   */
+
+    @DeleteMapping("/delete/employee/{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable int id) {
+      try {
+        employeeRepository.deleteById(id);
+        return new ResponseEntity<>("deleted booking by id = " + id, HttpStatus.OK);
+      } catch (Exception err) {
+        return new ResponseEntity<>("can't delete booking by id = " + id, HttpStatus.NOT_FOUND);
+      }
+    }
+  }
+
