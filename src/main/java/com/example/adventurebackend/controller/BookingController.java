@@ -68,7 +68,7 @@ public class BookingController {
    * @author Jackie
    */
   @DeleteMapping("/delete/booking/{id}")
-  public ResponseEntity<String> deleteCounty(@PathVariable int id) {
+  public ResponseEntity<String> deleteBooking(@PathVariable int id) {
     try {
       bookingRepository.deleteById(id);
       return new ResponseEntity<>("deleted booking by id = " + id, HttpStatus.OK);
