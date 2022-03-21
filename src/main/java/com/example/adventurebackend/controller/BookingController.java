@@ -73,7 +73,8 @@ public class BookingController {
       bookingRepository.deleteById(id);
       return new ResponseEntity<>("deleted booking by id = " + id, HttpStatus.OK);
     } catch (Exception err) {
-      return new ResponseEntity<>("can't delete booking by id = " + id + "\n ERROR: " + err, HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>(
+          "can't delete booking by id = " + id + "\n ERROR: " + err, HttpStatus.NOT_FOUND);
     }
   }
 }
