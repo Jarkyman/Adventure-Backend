@@ -14,8 +14,7 @@ import java.util.Optional;
 @CrossOrigin
 public class EmployeeController {
 
-  @Autowired
-  EmployeeRepository employeeRepository;
+  @Autowired EmployeeRepository employeeRepository;
 
   @GetMapping("/employee")
   public String test() {
@@ -46,4 +45,3 @@ public class EmployeeController {
     }
   }
 }
-

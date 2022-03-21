@@ -7,6 +7,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BookingController {
 
-  @Autowired
-  BookingRepository bookingRepository;
+  @Autowired BookingRepository bookingRepository;
 }
