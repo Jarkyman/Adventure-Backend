@@ -23,6 +23,7 @@ public class EmployeeController {
 
   /**
    * List of employees
+   *
    * @return all employees
    */
   @GetMapping("/employees")
@@ -32,6 +33,7 @@ public class EmployeeController {
 
   /**
    * Create employee
+   *
    * @param employee
    * @return employee to DB
    */
@@ -43,11 +45,11 @@ public class EmployeeController {
 
   /**
    * Being able to update any info under employee, but not the id
+   *
    * @param id
    * @param employee
    * @return updated employee or failed to upload
    */
-
   @PutMapping("/update/employee/{id}")
   public ResponseEntity<String> updateEmployee(
       @PathVariable int id, @RequestBody Employee employee) {
@@ -63,18 +65,18 @@ public class EmployeeController {
 
   /**
    * Delete employee by id
+   *
    * @param id
-   * @return if going as planned, employee gets deleted, otherwise it cant be found and wont be deleted
+   * @return if going as planned, employee gets deleted, otherwise it cant be found and wont be
+   *     deleted
    */
-
-    @DeleteMapping("/delete/employee/{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable int id) {
-      try {
-        employeeRepository.deleteById(id);
-        return new ResponseEntity<>("deleted booking by id = " + id, HttpStatus.OK);
-      } catch (Exception err) {
-        return new ResponseEntity<>("can't delete booking by id = " + id, HttpStatus.NOT_FOUND);
-      }
+  @DeleteMapping("/delete/employee/{id}")
+  public ResponseEntity<String> deleteEmployee(@PathVariable int id) {
+    try {
+      employeeRepository.deleteById(id);
+      return new ResponseEntity<>("deleted booking by id = " + id, HttpStatus.OK);
+    } catch (Exception err) {
+      return new ResponseEntity<>("can't delete booking by id = " + id, HttpStatus.NOT_FOUND);
     }
   }
-
+}
