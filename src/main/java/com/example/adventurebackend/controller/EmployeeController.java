@@ -16,10 +16,6 @@ public class EmployeeController {
 
   @Autowired EmployeeRepository employeeRepository;
 
-  @GetMapping("/employee")
-  public String test() {
-    return "Hej employees";
-  }
 
   /**
    * List of employees
