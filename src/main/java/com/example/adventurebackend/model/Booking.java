@@ -1,9 +1,9 @@
 package com.example.adventurebackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class Booking {
@@ -26,16 +26,17 @@ public class Booking {
   private LocalDate bookingDate;
 
   @Column(nullable = false)
+  private LocalTime bookingTime;
+
+  @Column(nullable = false)
   private int participants;
 
   @ManyToOne
-  @JoinColumn(name = "activity_id")
-  @JsonBackReference
+  @JoinColumn(name = "activity_id", nullable = false)
   private Activity activity;
 
   @ManyToOne
-  @JoinColumn(name = "employee_id")
-  @JsonBackReference
+  @JoinColumn(name = "employee_id", nullable = false)
   private Employee employee;
 
   public int getBookingId() {
@@ -76,6 +77,14 @@ public class Booking {
 
   public void setBookingDate(LocalDate bookingDate) {
     this.bookingDate = bookingDate;
+  }
+
+  public LocalTime getBookingTime() {
+    return bookingTime;
+  }
+
+  public void setBookingTime(LocalTime bookingTime) {
+    this.bookingTime = bookingTime;
   }
 
   public int getParticipants() {
