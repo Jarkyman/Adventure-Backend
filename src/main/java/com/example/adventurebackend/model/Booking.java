@@ -1,6 +1,5 @@
 package com.example.adventurebackend.model;
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
