@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 public class Activity {
-
+  // slet denne senere
   @Id
   @Column(name = "activity_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
