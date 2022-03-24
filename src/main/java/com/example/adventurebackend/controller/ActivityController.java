@@ -16,17 +16,36 @@ public class ActivityController {
 
   @Autowired ActivityRepository activityRepository;
 
+  /**
+   * Get a list of all activities in the system
+   *
+   * @return list of activities
+   */
   @GetMapping("/activities")
   public List<Activity> getAllActivities() {
     return activityRepository.findAll();
   }
 
+  /**
+   * Create a activity, get a request body in json. send data to database and save the activity object
+   * in database.
+   *
+   * @param activity data containing activity object
+   * @return Entity
+   */
   @PostMapping("/create/activity")
   @ResponseStatus(HttpStatus.CREATED)
   public Activity postActivity(@RequestBody Activity activity) {
     return activityRepository.save(activity);
   }
 
+  /**
+   * Update an activity, by id of the activity that needs update, and update with new request-body.
+   *
+   * @param id activity id
+   * @param activity activity object with updated information
+   * @return a Entity with complete msg
+   */
   @PutMapping("/update/activity/{id}")
   public ResponseEntity<Activity> updateActivity(
       @PathVariable int id, @RequestBody Activity activity) {
