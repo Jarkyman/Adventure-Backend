@@ -27,8 +27,8 @@ public class ActivityController {
   }
 
   /**
-   * Create a activity, get a request body in json. send data to database and save the activity object
-   * in database.
+   * Create a activity, get a request body in json. send data to database and save the activity
+   * object in database.
    *
    * @param activity data containing activity object
    * @return Entity
