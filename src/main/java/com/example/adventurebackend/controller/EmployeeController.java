@@ -29,7 +29,7 @@ public class EmployeeController {
   /**
    * Create employee
    *
-   * @param employee
+   * @param employee body to save in database
    * @return employee to DB
    */
   @PostMapping("/create/employee")
@@ -41,8 +41,8 @@ public class EmployeeController {
   /**
    * Being able to update any info under employee, but not the id
    *
-   * @param id
-   * @param employee
+   * @param id of employee to update
+   * @param employee updated employee body
    * @return updated employee or failed to upload
    */
   @PutMapping("/update/employee/{id}")
@@ -61,7 +61,7 @@ public class EmployeeController {
   /**
    * Delete employee by id
    *
-   * @param id
+   * @param id of employee
    * @return if going as planned, employee gets deleted, otherwise it cant be found and wont be
    *     deleted
    */
